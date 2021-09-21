@@ -27,8 +27,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT      double_farlomp
 
 /* key matrix size */
-#define MATRIX_ROWS 2
-#define MATRIX_COLS 3
+#define MATRIX_ROWS 4
+#define MATRIX_COLS 12
 
 /*
  * Keyboard Matrix Assignments
@@ -40,9 +40,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { D0, D5 }
-#define MATRIX_COL_PINS { F1, F0, B0 }
+#define MATRIX_ROW_PINS { D4, C6, D7, E6 }
+#define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3 }
+
+#define MATRIX_ROW_PINS_LEFT { D4, C6, D7, E6 }
+#define MATRIX_COL_PINS_LEFT { F4, F5, F6, F7, B1, B3 }
+#define ENCODERS_PAD_A_LEFT { B4 }
+#define ENCODERS_PAD_B_LEFT { B5 }
+
+#define MATRIX_ROW_PINS_RIGHT { D4, C6, D7, E6 }
+#define MATRIX_COL_PINS_RIGHT { F4, F5, F6, F7, B1, B3 }
+#define ENCODERS_PAD_A_RIGHT { B4 }
+#define ENCODERS_PAD_B_RIGHT { B5 }
+
 #define UNUSED_PINS
+
+#define MASTER_LEFT
 
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW

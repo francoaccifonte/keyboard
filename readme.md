@@ -30,3 +30,6 @@ Enter the bootloader in 3 ways:
 ```
 qmk compile -kb double_farlomp -km alpha_farlomp
 ```
+
+# Misc
+https://deskthority.net/wiki/Arduino_Pro_Micro#Pinout
