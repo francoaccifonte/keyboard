@@ -15,3 +15,37 @@
  */
 
 #include "double_farlomp.h"
+
+bool encoder_update(uint8_t index, bool clockwise) {
+    uint16_t held_keycode_timer = timer_read();
+    if (index == 0) { /* First encoder */
+        if (clockwise) {
+            tap_code(KC_A);
+            while (timer_elapsed(held_keycode_timer) < TAP_CODE_DELAY) {
+            }
+        } else {
+            tap_code(KC_A);
+            while (timer_elapsed(held_keycode_timer) < TAP_CODE_DELAY) {
+            }
+        }
+    } else if (index == 1) { /* Second encoder */
+        if (clockwise) {
+            tap_code(KC_A);
+            while (timer_elapsed(held_keycode_timer) < TAP_CODE_DELAY) {
+            }
+        } else {
+            tap_code(KC_A);
+            while (timer_elapsed(held_keycode_timer) < TAP_CODE_DELAY) {
+            }
+        }
+    }
+    return false;
+}
+
+bool encoder_update_kb(uint8_t index, bool clockwise) {
+    return encoder_update(index, clockwise);
+}
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    return encoder_update(index, clockwise);
+}
