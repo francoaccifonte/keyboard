@@ -24,17 +24,17 @@ bool encoder_update(uint8_t index, bool clockwise) {
             while (timer_elapsed(held_keycode_timer) < TAP_CODE_DELAY) {
             }
         } else {
-            tap_code(KC_A);
+            tap_code(KC_B);
             while (timer_elapsed(held_keycode_timer) < TAP_CODE_DELAY) {
             }
         }
     } else if (index == 1) { /* Second encoder */
         if (clockwise) {
-            tap_code(KC_A);
+            tap_code(KC_C);
             while (timer_elapsed(held_keycode_timer) < TAP_CODE_DELAY) {
             }
         } else {
-            tap_code(KC_A);
+            tap_code(KC_D);
             while (timer_elapsed(held_keycode_timer) < TAP_CODE_DELAY) {
             }
         }
