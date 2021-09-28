@@ -165,4 +165,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define BOOTMAGIC_LITE_COLUMN 0
 
 
-#define TAP_CODE_DELAY 100
+#define TAP_CODE_DELAY 10
