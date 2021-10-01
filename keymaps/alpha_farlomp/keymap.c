@@ -41,62 +41,62 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         //|--------+--------+--------+--------+--------+--------|
-            KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,
+            KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,
         //|--------+--------+--------+--------+--------+--------|
-            KC_LSFT,  KC_A,    KC_S,    KC_D,    KC_F,   KC_G,
+            KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,
         //|--------+--------+--------+--------+--------+--------|
-            KC_LCTL,  KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,
-        //|--------+--------+--------+--------+--------+--------+--------|
-                               KC_NO,  KC_LALT, KC_LGUI, NAV_SPC,   SYM_SPC,
-        //===============================================================|
-        //===============================================================|
-                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   KC_BSPC,
+            KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,
+        //|--------+--------+--------+--------+--------+--------+-------|
+                              KC_NO  , KC_LALT, KC_LGUI, NAV_SPC, KC_SPC,
+        //==============================================================|
+        //==============================================================|
+                      KC_Y , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUES,   KC_ENTER,
+                      KC_H , KC_J   , KC_K   , KC_L   , KC_QUES, KC_ENT ,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_N,    KC_M,  KC_COMMA,  KC_DOT, KC_SLASH,   KC_RSFT,
-        //|--------|--------+--------+--------+--------+--------+--------|
-        SYM_SPC,    S(KC_LCTL),    KC_MENU,    KC_RALT,    KC_NO
+                      KC_N , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
+        //|-------|--------+--------+--------+--------+--------+--------|
+        SYM_SPC, S(KC_LCTL), KC_MENU, KC_RALT, KC_NO
         //|--------------------------------------------+
     ),
     [_SYM] = LAYOUT(
         //|--------+--------+--------+--------+--------+--------|
-            KC_BSLS, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_LEFT_ANGLE_BRACKET, KC_RIGHT_ANGLE_BRACKET, KC_AT,
+            KC_BSLS, KC_LCBR, KC_RCBR, KC_LABK, KC_RABK, KC_AT  ,
         //|--------+--------+--------+--------+--------+--------|
-            KC_LSFT,  KC_LBRACKET,    KC_RBRACKET,    KC_COLON,    KC_SCOLON,   KC_HASH,
+            KC_LSFT, KC_LBRC, KC_RBRC, KC_COLN, KC_SCLN, KC_HASH,
         //|--------+--------+--------+--------+--------+--------|
-            KC_LCTL,  KC_LEFT_PAREN,    KC_RIGHT_PAREN,    KC_QUOT,    KC_GRV,   KC_TILDE,
-        //|--------+--------+--------+--------+--------+--------+--------|
-                               KC_NO,  KC_LALT, KC_LCTL, KC_NO,   SYM_SPC,
-        //===============================================================|
-        //===============================================================|
-                    KC_7,    KC_8,    KC_9,    KC_MINUS,    KC_NO,   KC_BSPC,
+            KC_LCTL, KC_LPRN, KC_RPRN, KC_QUOT, KC_GRV , KC_TILD,
+        //|--------+--------+--------+--------+--------+--------+-------|
+                               KC_NO , KC_LALT, KC_LCTL, KC_NO  , SYM_SPC,
+        //==============================================================|
+        //==============================================================|
+                    KC_NO  , KC_HOME, KC_UP  , KC_END , KC_DEL , KC_BSPC,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_4,    KC_5,    KC_6,    KC_PLUS,    ES_IQUE,   KC_ENTER,
+                    KC_NO  , KC_LEFT, KC_DOWN, KC_RGHT, KC_HOME, KC_END ,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_1,    KC_2,    KC_3,    KC_EQL,    KC_UNDS,   KC_RSFT,
-        //|--------|--------+--------+--------+--------+--------+--------|
-        RST_SPC,    KC_0,    KC_NO,    KC_NO,    ES_NTIL
+                    KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        //|-------|--------+--------+--------+--------+--------+--------|
+            KC_NO , KC_NO  , KC_NO  , KC_NO  , KC_NO
         //|--------------------------------------------+
     ),
     [_NAV] = LAYOUT(
         //|--------+--------+--------+--------+--------+--------|
-            KC_ESC, KC_TAB, KC_GRV, KC_NO, KC_NO, KC_NO,
+            KC_ESC , KC_TAB , KC_GRV , KC_NO  , KC_NO  , KC_NO  ,
         //|--------+--------+--------+--------+--------+--------|
-            KC_LSFT,  KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
+            KC_LSFT,  KC_NO , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         //|--------+--------+--------+--------+--------+--------|
-            KC_LALT,  KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
+            KC_LALT,  KC_NO , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         //|--------+--------+--------+--------+--------+--------+--------|
-                               KC_NO,  KC_NO, KC_NO, KC_NO,   KC_NO,
+                               KC_NO , KC_LALT, KC_LCTL, KC_NO  , KC_NO  ,
         //===============================================================|
         //===============================================================|
-                    KC_NO,    KC_NO,    KC_UP,  KC_NO,    KC_DEL, KC_BSPC,
+                    KC_7   , KC_8   , KC_9   , KC_MINS, KC_NO  , KC_BSPC,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_NO,    KC_LEFT,    KC_DOWN,    KC_RIGHT,    KC_HOME,   KC_END,
+                    KC_4   , KC_5   , KC_6   , KC_PLUS, ES_IQUE, KC_ENT ,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
-        //|--------|--------+--------+--------+--------+--------+--------|
-        KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
+                    KC_1   , KC_2   , KC_3   , KC_EQL , KC_UNDS, KC_RSFT,
+    //|-------|--------+--------+--------+--------+--------+--------|
+           RST_SPC, KC_0   , KC_NO  , KC_NO  , ES_NTIL
         //|--------------------------------------------+
     ),
     [_RST] = LAYOUT(
@@ -110,13 +110,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_NO,  KC_NO, KC_NO, KC_NO,   KC_NO,
         //===============================================================|
         //===============================================================|
-                    KC_NO,    KC_NO,    KC_NO,  KC_NO,    RESET,   KC_NO,
+                    KC_NO  , KC_NO  , KC_NO  , KC_NO  , RESET  , KC_BSPC,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
+                    KC_NO  , KC_NO , KC_NO   , KC_NO  , KC_NO  , KC_ENT ,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
-        //|--------|--------+--------+--------+--------+--------+--------|
-        KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
+                    KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_RSFT,
+        //|-------|--------+--------+--------+--------+--------+--------|
+            KC_NO , KC_NO  , KC_NO  , KC_NO  , KC_NO
         //|--------------------------------------------+
     )
 };
