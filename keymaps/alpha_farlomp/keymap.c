@@ -16,7 +16,7 @@
 #include QMK_KEYBOARD_H
 #include <keymap_spanish.h>
 
-#define SYM_SPC LT(_SYM, KC_SPC)
+#define SYM_SPC LT(_SYM, KC_NO)
 #define NAV_SPC LT(_NAV, KC_SPC)
 #define RST_SPC LT(_RST, KC_SPC)
 #define UTL_SPC LT(_UTILS, KC_SPC)
@@ -63,33 +63,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_SYM] = LAYOUT(
         //|--------+--------+--------+--------+--------+--------|
-            KC_BSLS, KC_LCBR, KC_RCBR, KC_LABK, KC_RABK, KC_AT  ,
+            KC_ESC , KC_LCBR, KC_RCBR, KC_LABK, KC_RABK, KC_DQUO,
         //|--------+--------+--------+--------+--------+--------|
-            KC_LSFT, KC_LBRC, KC_RBRC, KC_COLN, KC_SCLN, KC_HASH,
+            KC_LSFT, KC_LBRC, KC_RBRC, KC_COLN, KC_SCLN, KC_QUOT,
         //|--------+--------+--------+--------+--------+--------|
-            KC_LCTL, KC_LPRN, KC_RPRN, KC_QUOT, KC_GRV , KC_TILD,
+            KC_LCTL, KC_LPRN, KC_RPRN, KC_AT  , KC_HASH, KC_GRV ,
         //|--------+--------+--------+--------+--------+--------+-------|
-                               KC_NO , KC_LALT, KC_LCTL, KC_NO  , UTL_SPC,
+                               KC_NO , KC_LALT, KC_LGUI, KC_NO  , UTL_SPC,
         //==============================================================|
         //==============================================================|
-                    KC_UNDS, KC_NO  , KC_NO  , KC_MINS, KC_DEL , KC_BSPC,
+                    KC_UNDS, KC_MINS, KC_NO  , KC_NO  , KC_DEL , KC_BSPC,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_NO  , KC_NO  , KC_NO  , KC_PLUS, KC_NO  , KC_ENT ,
+                    KC_BSLS, KC_PLUS, KC_NO  , KC_NO  , KC_NO  , KC_ENT ,
         //        |--------+--------+--------+--------+--------+--------|
-                    KC_NO  , KC_NO  , KC_NO  , KC_EQL , KC_NO  , KC_RSFT,
+                    KC_TILD, KC_EQL , KC_NO  , KC_NO  , KC_NO  , KC_RSFT,
         //|-------|--------+--------+--------+--------+--------+--------|
-            KC_NO , KC_NO  , KC_NO  , KC_RALT  , KC_NO
+            KC_NO , KC_NO  , KC_NO  , KC_RALT, KC_NO
         //|--------------------------------------------+
     ),
     [_NAV] = LAYOUT(
         //|--------+--------+--------+--------+--------+--------|
-            KC_ESC , KC_TAB , KC_GRV , KC_7   , KC_8   , KC_9   ,
-        //|--------+--------+--------+--------+--------+--------|
-            KC_LSFT,  KC_NO , KC_NO  , KC_4   , KC_5   , KC_6   ,
-        //|--------+--------+--------+--------+--------+--------|
-            KC_LALT,  KC_NO , KC_NO  , KC_1   , KC_2   , KC_3   ,
+            KC_ESC , KC_TAB , KC_7   , KC_8   , KC_9   , KC_COMM,
+        //|--------+--------+---------+-------+-------+---------|
+            KC_LSFT, KC_GRV ,  KC_4   , KC_5  , KC_6   , KC_DOT ,
+        //|--------+--------+---------+-------+-------+---------|
+            KC_LCTL, KC_LGUI,  KC_1   , KC_2  , KC_3   , KC_0   ,
         //|--------+--------+--------+--------+--------+--------+--------|
-                               KC_NO , KC_LALT, KC_LCTL, KC_NO  , KC_NO  ,
+                               KC_NO , KC_LALT, KC_LGUI, KC_NO  , KC_NO  ,
         //===============================================================|
         //===============================================================|
                     KC_NO  , KC_HOME, KC_UP  , KC_END , KC_NO  , KC_BSPC,
@@ -105,9 +105,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|
         KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,
     //|--------+--------+--------+--------+--------+--------|
-        KC_LSFT,  KC_NO , KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU,
+        KC_LSFT, KC_NO  , KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU,
     //|--------+--------+--------+--------+--------+--------|
-        KC_LCTL, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_VOLD,
+        KC_LCTL, KC_LALT, KC_NO  , KC_NO  , KC_NO  , KC_VOLD,
     //|--------+--------+--------+--------+--------+--------+--------|
                             KC_NO , KC_LALT, KC_NO  , KC_NO  , KC_NO ,
     //===============================================================|
@@ -188,10 +188,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     )
 */
 
-bool encoder_left(bool clockwise) {
+bool encoder_right(bool clockwise) {
     switch(get_highest_layer(layer_state)) {
         case _BASE:
-            if (!clockwise) {
+            if (clockwise) {
+                if (!is_alt_tab_active) {
+                    is_alt_tab_active = true;
+                    register_code(KC_LALT);
+                }
+                alt_tab_timer = timer_read();
+                tap_code16(KC_GRV);
+            } else {
+                if (!is_alt_tab_active) {
+                    is_alt_tab_active = true;
+                    register_code(KC_LALT);
+                }
+                alt_tab_timer = timer_read();
+                tap_code16(S(KC_GRV));
+            }
+            break;
+        case _NAV:
+            if (clockwise) {
                 if (!is_alt_tab_active) {
                     is_alt_tab_active = true;
                     register_code(KC_LALT);
@@ -213,13 +230,13 @@ bool encoder_left(bool clockwise) {
     return false;
 }
 
-bool encoder_right(bool clockwise) {
+bool encoder_left(bool clockwise) {
     switch(get_highest_layer(layer_state)) {
         case _BASE:
-            tap_code16( clockwise ? LCTL(KC_TAB) : LCTL(LSFT(KC_TAB)));
+            tap_code16( clockwise ?  LCTL(LSFT(KC_TAB)) : LCTL(KC_TAB));
             break;
         case _NAV:
-            for (int i=0; i<4; i++) { tap_code16( clockwise ? KC_WH_D : KC_WH_U); }
+            for (int i=0; i<4; i++) { tap_code16( clockwise ? KC_WH_U : KC_WH_D); }
         default:
             break;
     }
