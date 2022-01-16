@@ -45,8 +45,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MATRIX_ROW_PINS_LEFT { D4, C6, D7, E6 }
 #define MATRIX_COL_PINS_LEFT { B3, B1, F7, F6, F5, F4 }
-#define ENCODERS_PAD_A { B4 }
-#define ENCODERS_PAD_B { B5 }
+// #define ENCODERS_PAD_A { B4 }
+// #define ENCODERS_PAD_B { B5 }
 
 #define MATRIX_ROW_PINS_RIGHT { D4, C6, D7, E6 }
 // #define MATRIX_COL_PINS_RIGHT { F4, F5, F6, F7, B1, B3 }
